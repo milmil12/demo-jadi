@@ -75,7 +75,7 @@ color_mapper = CategoricalColorMapper(factors=benua_list, palette=Spectral6)
 source = ColumnDataSource(data={
     'x'       : data.Terkonfirmasi,
     'y'       : data.Sembuh,
-    'Kasus Kematian' : data.Kasus_Kematian,
+    'Kasus_Kematian' : data.Kasus_Kematian,
     'Aktif'     : data.Aktif,
     'Benua'  : data.Benua,
 })
@@ -150,9 +150,6 @@ curdoc().add_root(layout)
 day_num = ['Terkonfirmasi', 'Kasus Kematian', 'Sembuh', 'Aktif']
 daily_words = [data.loc['Indonesia'].Terkonfirmasi, data.loc['Indonesia'].Kasus_Kematian, data.loc['Indonesia'].Sembuh, data.loc['Indonesia'].Aktif]
 
-# Output the visualization directly in the notebook
-output_notebook()
-
 # Create a figure with a datetime type x-axis
 fig = figure(title='My Tutorial Progress',
              x_range=day_num,
@@ -172,6 +169,8 @@ east_panel = Panel(child=layout, title='Eastern Conference')
 west_panel = Panel(child=fig, title='Western Conference')
 tabs = Tabs(tabs=[west_panel, east_panel])
 curdoc().add_root(tabs)
+# Show the tabbed layout
+# show(tabs)
 
 
 
